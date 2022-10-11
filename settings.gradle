@@ -1,0 +1,3 @@
+rootProject.name = "AlienKidsAds"
+include ':app'
+include ':AlienAdsV2'
