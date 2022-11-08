@@ -13,7 +13,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 
 public class MyApplication extends Application {
     private static AlienOpenAds alienOpenAds;
-
+    private static AlienNotif notif;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -37,7 +37,7 @@ public class MyApplication extends Application {
                 .withPerformanceMetrics(FlurryPerformance.ALL)
                 .build(this, "R57SQ7KD3KM6ZPN6F94B");
         alienOpenAds = new AlienOpenAds(this);
-
+        notif = new AlienNotif(this);
 
     }
 }
