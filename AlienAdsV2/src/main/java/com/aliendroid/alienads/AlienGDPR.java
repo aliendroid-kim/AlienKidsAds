@@ -72,10 +72,10 @@ public class AlienGDPR {
             case "IRON":
                 IronSource.setConsent(true);
                 IronSource.setMetaData("do_not_sell", "false");
-                IronSource.setMetaData("is_child_directed", String.valueOf(childDirected));
+                IronSource.setMetaData("is_deviceid_optout","true");
+                IronSource.setMetaData("is_child_directed","true");
                 break;
             case "APPLOVIN-M":
-                AppLovinPrivacySettings.setIsAgeRestrictedUser(childDirected, activity);
                 break;
             case "APPLOVIN-D":
                 AppLovinPrivacySettings.setIsAgeRestrictedUser(childDirected, activity);

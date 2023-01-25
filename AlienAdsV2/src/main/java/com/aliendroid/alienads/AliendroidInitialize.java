@@ -32,12 +32,6 @@ public class AliendroidInitialize {
         });
         switch (selectAdsBackup) {
             case "APPLOVIN-M":
-                AppLovinSdk.getInstance(activity).setMediationProvider(AppLovinMediationProvider.MAX);
-                AppLovinSdk.getInstance(activity).initializeSdk(config -> {
-
-                });
-                AppLovinSdk sdk = AppLovinSdk.getInstance(activity);
-                sdk.getSettings().setMuted(!sdk.getSettings().isMuted());
                 break;
             case "MOPUB":
                 break;

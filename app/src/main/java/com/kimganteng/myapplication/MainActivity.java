@@ -42,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
             AlienViewAds.OpenApp(MainActivity.this,AppIDViewAds);
         }
          */
-        AliendroidInitialize.SelectAdsApplovinMax(this,Select_Backup_Ads,Backup_Initialize);
+        AliendroidInitialize.SelectAdsAdmob(this,Select_Backup_Ads,Backup_Initialize);
         AlienGDPR.loadGdpr(this,Select_Main_Ads,true);
-        AliendroidIntertitial.LoadIntertitialApplovinMax(MainActivity.this,Select_Backup_Ads,MainIntertitial,BackupIntertitial);
+        AliendroidIntertitial.LoadIntertitialAdmob(MainActivity.this,Select_Backup_Ads,MainIntertitial,BackupIntertitial
+        ,"","","","","");
 
         AliendroidIntertitial.onShowInterstitialAdmob = new OnShowInterstitialAdmob() {
             @Override
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        AliendroidReward.LoadRewardApplovinMax(this,Select_Backup_Ads,MainRewards,BackupReward);
+        AliendroidReward.LoadRewardAdmob(this,Select_Backup_Ads,MainRewards,BackupReward);
         AliendroidReward.onLoadRewardsAdmob = new OnLoadRewardsAdmob() {
             @Override
             public void onAdFailedToLoad() {

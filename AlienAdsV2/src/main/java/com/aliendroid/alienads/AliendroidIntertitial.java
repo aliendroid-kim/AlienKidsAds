@@ -123,8 +123,6 @@ public class AliendroidIntertitial {
                 });
         switch (selectAdsBackup) {
             case "APPLOVIN-M":
-                interstitialAd = new MaxInterstitialAd(idIntertitialBackup, activity);
-                interstitialAd.loadAd();
                 break;
             case "MOPUB":
             case "UNITY":
@@ -293,8 +291,6 @@ public class AliendroidIntertitial {
 
         switch (selectAdsBackup) {
             case "APPLOVIN-M":
-                interstitialAd = new MaxInterstitialAd(idIntertitialBackup, activity);
-                interstitialAd.loadAd();
                 break;
             case "MOPUB":
             case "UNITY":
@@ -360,191 +356,10 @@ public class AliendroidIntertitial {
                                                      String HPK2, String HPK3, String HPK4, String HPK5
     ) {
 
-        AdRequest.Builder builder = new AdRequest.Builder().addKeyword(HPK1).addKeyword(HPK2).addKeyword(HPK3).addKeyword(HPK4).addKeyword(HPK5);
-        Bundle interstitialExtras = new Bundle();
-        interstitialExtras.putString("zone_id", idIntertitial);
-        builder.addCustomEventExtrasBundle(AppLovinCustomEventInterstitial.class, interstitialExtras);
-
-        AppLovinSdk.getInstance(activity).getAdService().loadNextAd(AppLovinAdSize.INTERSTITIAL, new AppLovinAdLoadListener() {
-            @Override
-            public void adReceived(AppLovinAd ad) {
-                loadedAd = ad;
-                if (onLoadInterstitialApplovinDiscovery != null) {
-                    onLoadInterstitialApplovinDiscovery.adReceived();
-                }
-            }
-
-            @Override
-            public void failedToReceiveAd(int errorCode) {
-                if (onLoadInterstitialApplovinDiscovery != null) {
-                    onLoadInterstitialApplovinDiscovery.failedToReceiveAd("");
-                }
-            }
-        });
-        interstitialAdlovin = AppLovinInterstitialAd.create(AppLovinSdk.getInstance(activity), activity);
-
-        switch (selectAdsBackup) {
-            case "APPLOVIN-M":
-                interstitialAd = new MaxInterstitialAd(idIntertitialBackup, activity);
-                interstitialAd.loadAd();
-                break;
-            case "MOPUB":
-            case "UNITY":
-
-                break;
-            case "IRON":
-                IronSource.isInterstitialPlacementCapped(idIntertitialBackup);
-                IronSource.loadInterstitial();
-                break;
-            case "ADMOB":
-
-                AdRequest request = new AdRequest.Builder()
-                        .build();
-                InterstitialAd.load(activity, idIntertitialBackup, request,
-                        new InterstitialAdLoadCallback() {
-                            @Override
-                            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                                // The mInterstitialAd reference will be null until
-                                // an ad is loaded.
-                                mInterstitialAd = interstitialAd;
-                                Log.i(TAG, "onAdLoaded");
-                            }
-
-                            @Override
-                            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                                // Handle the error
-                                Log.i(TAG, loadAdError.getMessage());
-                                mInterstitialAd = null;
-                            }
-                        });
-                break;
-            case "FACEBOOK":
-                break;
-            case "GOOGLE-ADS":
-                AdManagerAdRequest adRequest =
-                        new AdManagerAdRequest.Builder()
-                                .build();
-
-                AdManagerInterstitialAd.load(activity, idIntertitialBackup, adRequest,
-                        new AdManagerInterstitialAdLoadCallback() {
-                            @Override
-                            public void onAdLoaded(@NonNull AdManagerInterstitialAd interstitialAd) {
-                                // The mAdManagerInterstitialAd reference will be null until
-                                // an ad is loaded.
-                                mAdManagerInterstitialAd = interstitialAd;
-                                Log.i(TAG, "onAdLoaded");
-                            }
-
-                            @Override
-                            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                                // Handle the error
-                                Log.i(TAG, loadAdError.getMessage());
-                                mAdManagerInterstitialAd = null;
-                            }
-                        });
-
-                break;
-            case "ALIEN-V":
-                break;
-            case "ALIEN-M":
-                break;
-
-        }
     }
 
     public static void LoadIntertitialApplovinMax(Activity activity, String selectAdsBackup, String idIntertitial, String idIntertitialBackup) {
 
-        interstitialAd = new MaxInterstitialAd(idIntertitial, activity);
-        interstitialAd.loadAd();
-
-        switch (selectAdsBackup) {
-            case "APPLOVIN-D":
-                AdRequest.Builder builder = new AdRequest.Builder();
-                Bundle interstitialExtras = new Bundle();
-                interstitialExtras.putString("zone_id", idIntertitialBackup);
-                builder.addCustomEventExtrasBundle(AppLovinCustomEventInterstitial.class, interstitialExtras);
-                AppLovinSdk.getInstance(activity).getAdService().loadNextAd(AppLovinAdSize.INTERSTITIAL, new AppLovinAdLoadListener() {
-                    @Override
-                    public void adReceived(AppLovinAd ad) {
-                        loadedAd = ad;
-                        if (onLoadInterstitialApplovinMax != null) {
-                            onLoadInterstitialApplovinMax.adReceived();
-                        }
-                    }
-
-                    @Override
-                    public void failedToReceiveAd(int errorCode) {
-                        if (onLoadInterstitialApplovinMax != null) {
-                            onLoadInterstitialApplovinMax.failedToReceiveAd("");
-                        }
-                    }
-                });
-                interstitialAdlovin = AppLovinInterstitialAd.create(AppLovinSdk.getInstance(activity), activity);
-                break;
-            case "MOPUB":
-            case "UNITY":
-
-                break;
-            case "IRON":
-                IronSource.isInterstitialPlacementCapped(idIntertitialBackup);
-                IronSource.loadInterstitial();
-                break;
-            case "ADMOB":
-
-
-                AdRequest request = new AdRequest.Builder()
-                        .build();
-                InterstitialAd.load(activity, idIntertitialBackup, request,
-                        new InterstitialAdLoadCallback() {
-                            @Override
-                            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                                // The mInterstitialAd reference will be null until
-                                // an ad is loaded.
-                                mInterstitialAd = interstitialAd;
-                                Log.i(TAG, "onAdLoaded");
-                            }
-
-                            @Override
-                            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                                // Handle the error
-                                Log.i(TAG, loadAdError.getMessage());
-                                mInterstitialAd = null;
-                            }
-                        });
-                break;
-            case "GOOGLE-ADS":
-                AdManagerAdRequest adRequest =
-                        new AdManagerAdRequest.Builder()
-                                .build();
-
-                AdManagerInterstitialAd.load(activity, idIntertitialBackup, adRequest,
-                        new AdManagerInterstitialAdLoadCallback() {
-                            @Override
-                            public void onAdLoaded(@NonNull AdManagerInterstitialAd interstitialAd) {
-                                // The mAdManagerInterstitialAd reference will be null until
-                                // an ad is loaded.
-                                mAdManagerInterstitialAd = interstitialAd;
-                                Log.i(TAG, "onAdLoaded");
-                            }
-
-                            @Override
-                            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                                // Handle the error
-                                Log.i(TAG, loadAdError.getMessage());
-                                mAdManagerInterstitialAd = null;
-                            }
-                        });
-
-                break;
-            case "FACEBOOK":
-                break;
-            case "ALIEN-V":
-                break;
-            case "ALIEN-M":
-                break;
-
-
-        }
     }
 
     public static void LoadIntertitialIron(Activity activity, String selectAdsBackup, String idIntertitial, String idIntertitialBackup) {
@@ -627,8 +442,6 @@ public class AliendroidIntertitial {
 
                 break;
             case "APPLOVIN-M":
-                interstitialAd = new MaxInterstitialAd(idIntertitialBackup, activity);
-                interstitialAd.loadAd();
                 break;
             case "ADMOB":
 
@@ -921,129 +734,10 @@ public class AliendroidIntertitial {
     public static void ShowIntertitialApplovinDisHPK(Activity activity, String selectAdsBackup, String idIntertitial, String idIntertitialBackup,
                                                      int interval, String HPK1,
                                                      String HPK2, String HPK3, String HPK4, String HPK5) {
-        if (counter >= interval) {
-            if (interstitialAdlovin != null) {
-                AppLovinAdDisplayListener listener = new AppLovinAdDisplayListener() {
-                    @Override
-                    public void adDisplayed(AppLovinAd ad) {
-                        if (onShowInterstitialApplovinDiscovery != null) {
-                            onShowInterstitialApplovinDiscovery.onAdSuccess();
-                        }
-                    }
-
-                    @Override
-                    public void adHidden(AppLovinAd ad) {
-                        if (onShowInterstitialApplovinDiscovery != null) {
-                            onShowInterstitialApplovinDiscovery.onAdFailedShow();
-                        }
-                        switch (selectAdsBackup) {
-                            case "APPLOVIN-M":
-                                if (interstitialAd.isReady()) {
-                                    interstitialAd.showAd();
-                                    interstitialAd.loadAd();
-                                } else {
-                                    interstitialAd.loadAd();
-                                }
-                                break;
-                            case "MOPUB":
-                            case "UNITY":
-
-                                break;
-                            case "IRON":
-                                IronSource.showInterstitial(idIntertitialBackup);
-                                break;
-                            case "STARTAPP":
-                                break;
-                            case "ADMOB":
-                                if (mInterstitialAd != null) {
-                                    mInterstitialAd.show(activity);
-                                }
-                                break;
-                            case "GOOGLE-ADS":
-                                if (mAdManagerInterstitialAd != null) {
-                                    mAdManagerInterstitialAd.show(activity);
-                                }
-                                break;
-                            case "FACEBOOK":
-                                break;
-                            case "ALIEN-V":
-                                SHOW_ALIEN_VIEW = true;
-                                break;
-                            case "ALIEN-M":
-                                break;
-                        }
-                        LoadIntertitialApplovinDisHPK(activity, selectAdsBackup, idIntertitial, idIntertitialBackup, HPK1,
-                                HPK2, HPK3, HPK4, HPK5);
-                    }
-                };
-                interstitialAdlovin.setAdDisplayListener(listener);
-                interstitialAdlovin.showAndRender(loadedAd);
-                LoadIntertitialApplovinDisHPK(activity, selectAdsBackup, idIntertitial, idIntertitialBackup, HPK1,
-                        HPK2, HPK3, HPK4, HPK5);
-            }
-
-            counter = 0;
-        } else {
-            counter++;
-        }
-
     }
 
     public static void ShowIntertitialApplovinMax(Activity activity, String selectAdsBackup, String idIntertitial, String idIntertitialBackup,
                                                   int interval) {
-        if (counter >= interval) {
-            if (interstitialAd.isReady()) {
-                interstitialAd.showAd();
-                LoadIntertitialApplovinMax(activity, selectAdsBackup, idIntertitial, idIntertitialBackup);
-                if (onShowInterstitialApplovinMax != null) {
-                    onShowInterstitialApplovinMax.onAdSuccess();
-                }
-            } else {
-                if (onShowInterstitialApplovinMax != null) {
-                    onShowInterstitialApplovinMax.onAdFailedShow();
-                }
-                switch (selectAdsBackup) {
-                    case "APPLOVIN-D":
-                        if (interstitialAdlovin != null) {
-                            interstitialAdlovin.showAndRender(loadedAd);
-                        }
-                        break;
-                    case "MOPUB":
-                    case "UNITY":
-
-
-                        break;
-                    case "IRON":
-                        IronSource.showInterstitial(idIntertitialBackup);
-                        break;
-                    case "STARTAPP":
-                        break;
-                    case "ADMOB":
-                        if (mInterstitialAd != null) {
-                            mInterstitialAd.show(activity);
-                        }
-                        break;
-                    case "GOOGLE-ADS":
-                        if (mAdManagerInterstitialAd != null) {
-                            mAdManagerInterstitialAd.show(activity);
-                        }
-                        break;
-                    case "FACEBOOK":
-                        break;
-                    case "ALIEN-V":
-                        SHOW_ALIEN_VIEW = true;
-                        break;
-                    case "ALIEN-M":
-                        break;
-                }
-                interstitialAd.loadAd();
-            }
-            LoadIntertitialApplovinMax(activity, selectAdsBackup, idIntertitial, idIntertitialBackup);
-            counter = 0;
-        } else {
-            counter++;
-        }
-
     }
 
     public static void ShowIntertitialIron(Activity activity, String selectAdsBackup, String idIntertitial, String idIntertitialBackup,

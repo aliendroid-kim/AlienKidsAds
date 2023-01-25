@@ -86,55 +86,7 @@ public class AliendroidReward {
                     });
             switch (selectBackupAds) {
                 case "APPLOVIN-M":
-                    rewardedAd = MaxRewardedAd.getInstance(idBackupReward, activity);
-                    rewardedAd.loadAd();
-                    MaxRewardedAdListener maxRewardedAdListener = new MaxRewardedAdListener() {
-                        @Override
-                        public void onRewardedVideoStarted(MaxAd ad) {
 
-                        }
-
-                        @Override
-                        public void onRewardedVideoCompleted(MaxAd ad) {
-                            unlockreward = true;
-                        }
-
-                        @Override
-                        public void onUserRewarded(MaxAd ad, MaxReward reward) {
-
-                        }
-
-                        @Override
-                        public void onAdLoaded(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdDisplayed(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdHidden(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdClicked(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdLoadFailed(String adUnitId, MaxError error) {
-
-                        }
-
-                        @Override
-                        public void onAdDisplayFailed(MaxAd ad, MaxError error) {
-
-                        }
-                    };
-                    rewardedAd.setListener(maxRewardedAdListener);
                     break;
                 case "MOPUB":
                 case "UNITY":
@@ -242,55 +194,7 @@ public class AliendroidReward {
                     });
             switch (selectBackupAds) {
                 case "APPLOVIN-M":
-                    rewardedAd = MaxRewardedAd.getInstance(idBackupReward, activity);
-                    rewardedAd.loadAd();
-                    MaxRewardedAdListener maxRewardedAdListener = new MaxRewardedAdListener() {
-                        @Override
-                        public void onRewardedVideoStarted(MaxAd ad) {
 
-                        }
-
-                        @Override
-                        public void onRewardedVideoCompleted(MaxAd ad) {
-                            unlockreward = true;
-                        }
-
-                        @Override
-                        public void onUserRewarded(MaxAd ad, MaxReward reward) {
-
-                        }
-
-                        @Override
-                        public void onAdLoaded(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdDisplayed(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdHidden(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdClicked(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdLoadFailed(String adUnitId, MaxError error) {
-
-                        }
-
-                        @Override
-                        public void onAdDisplayFailed(MaxAd ad, MaxError error) {
-
-                        }
-                    };
-                    rewardedAd.setListener(maxRewardedAdListener);
                     break;
                 case "MOPUB":
                 case "UNITY":
@@ -364,162 +268,6 @@ public class AliendroidReward {
 
 
     public static void LoadRewardApplovinMax(Activity activity, String selectBackupAds, String idReward, String idBackupReward) {
-        try {
-            rewardedAd = MaxRewardedAd.getInstance(idReward, activity);
-            rewardedAd.loadAd();
-            MaxRewardedAdListener maxRewardedAdListener = new MaxRewardedAdListener() {
-                @Override
-                public void onRewardedVideoStarted(MaxAd ad) {
-                    if (onLoadRewardsApplovinMax != null) {
-                        onLoadRewardsApplovinMax.onRewardedVideoStarted();
-                    }
-                }
-
-                @Override
-                public void onRewardedVideoCompleted(MaxAd ad) {
-                    if (onLoadRewardsApplovinMax != null) {
-                        onLoadRewardsApplovinMax.onRewardedVideoCompleted();
-                    }
-                    unlockreward = true;
-                }
-
-                @Override
-                public void onUserRewarded(MaxAd ad, MaxReward reward) {
-                    if (onLoadRewardsApplovinMax != null) {
-                        onLoadRewardsApplovinMax.onUserRewarded();
-                    }
-                }
-
-                @Override
-                public void onAdLoaded(MaxAd ad) {
-                    if (onLoadRewardsApplovinMax != null) {
-                        onLoadRewardsApplovinMax.onAdLoaded();
-                    }
-                }
-
-                @Override
-                public void onAdDisplayed(MaxAd ad) {
-                    if (onLoadRewardsApplovinMax != null) {
-                        onLoadRewardsApplovinMax.onAdDisplayed();
-                    }
-                }
-
-                @Override
-                public void onAdHidden(MaxAd ad) {
-                    if (onLoadRewardsApplovinMax != null) {
-                        onLoadRewardsApplovinMax.onAdHidden();
-                    }
-                }
-
-                @Override
-                public void onAdClicked(MaxAd ad) {
-                    if (onLoadRewardsApplovinMax != null) {
-                        onLoadRewardsApplovinMax.onAdClicked();
-                    }
-                }
-
-                @Override
-                public void onAdLoadFailed(String adUnitId, MaxError error) {
-                    if (onLoadRewardsApplovinMax != null) {
-                        onLoadRewardsApplovinMax.onAdLoadFailed();
-                    }
-                }
-
-                @Override
-                public void onAdDisplayFailed(MaxAd ad, MaxError error) {
-                    if (onLoadRewardsApplovinMax != null) {
-                        onLoadRewardsApplovinMax.onAdDisplayFailed();
-                    }
-                }
-            };
-            rewardedAd.setListener(maxRewardedAdListener);
-            switch (selectBackupAds) {
-                case "ADMOB":
-                case "GOOGLE-ADS":
-
-                    AdRequest adRequest = new AdRequest.Builder()
-                            .build();
-                    RewardedAd.load(activity, idBackupReward,
-                            adRequest, new RewardedAdLoadCallback() {
-                                @Override
-                                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                                    mRewardedAd = null;
-                                }
-
-                                @Override
-                                public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
-                                    mRewardedAd = rewardedAd;
-
-                                }
-                            });
-                    break;
-                case "MOPUB":
-                case "UNITY":
-
-                    break;
-                case "APPLOVIN-D":
-                    incentivizedInterstitial = AppLovinIncentivizedInterstitial.create(idBackupReward, AppLovinSdk.getInstance(activity));
-                    incentivizedInterstitial.preload(new AppLovinAdLoadListener() {
-                        @Override
-                        public void adReceived(AppLovinAd appLovinAd) {
-                            // A rewarded video was successfully received.
-                        }
-
-                        @Override
-                        public void failedToReceiveAd(int errorCode) {
-                            // A rewarded video failed to load.
-                        }
-                    });
-                    break;
-                case "IRON":
-                    IronSource.setRewardedVideoListener(new RewardedVideoListener() {
-                        @Override
-                        public void onRewardedVideoAdOpened() {
-                        }
-
-                        @Override
-                        public void onRewardedVideoAdClosed() {
-                        }
-
-                        @Override
-                        public void onRewardedVideoAvailabilityChanged(boolean available) {
-                        }
-
-                        @Override
-                        public void onRewardedVideoAdRewarded(Placement placement) {
-                            unlockreward = true;
-                        }
-
-                        @Override
-                        public void onRewardedVideoAdShowFailed(IronSourceError error) {
-                        }
-
-                        @Override
-                        public void onRewardedVideoAdClicked(Placement placement) {
-                        }
-
-                        @Override
-                        public void onRewardedVideoAdStarted() {
-                        }
-
-                        @Override
-                        public void onRewardedVideoAdEnded() {
-                        }
-                    });
-                    break;
-                case "STARTAPP":
-                    break;
-                case "ALIEN-M":
-
-                    break;
-                case "ALIEN-V":
-
-                    break;
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -562,59 +310,8 @@ public class AliendroidReward {
                     break;
                 case "MOPUB":
                 case "UNITY":
-
                     break;
                 case "APPLOVIN-M":
-                    rewardedAd = MaxRewardedAd.getInstance(idBackupReward, activity);
-                    rewardedAd.loadAd();
-                    MaxRewardedAdListener maxRewardedAdListener = new MaxRewardedAdListener() {
-                        @Override
-                        public void onRewardedVideoStarted(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onRewardedVideoCompleted(MaxAd ad) {
-                            unlockreward = true;
-                        }
-
-                        @Override
-                        public void onUserRewarded(MaxAd ad, MaxReward reward) {
-
-                        }
-
-                        @Override
-                        public void onAdLoaded(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdDisplayed(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdHidden(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdClicked(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdLoadFailed(String adUnitId, MaxError error) {
-
-                        }
-
-                        @Override
-                        public void onAdDisplayFailed(MaxAd ad, MaxError error) {
-
-                        }
-                    };
-                    rewardedAd.setListener(maxRewardedAdListener);
-
                     break;
                 case "IRON":
                     IronSource.setRewardedVideoListener(new RewardedVideoListener() {
@@ -722,12 +419,8 @@ public class AliendroidReward {
                             break;
                         case "MOPUB":
                         case "UNITY":
-
                             break;
                         case "APPLOVIN-M":
-                            if (rewardedAd.isReady()) {
-                                rewardedAd.showAd();
-                            }
                             break;
                         case "APPLOVIN-D":
                             if (incentivizedInterstitial != null) {
@@ -832,56 +525,6 @@ public class AliendroidReward {
                     });
                     break;
                 case "APPLOVIN-M":
-                    rewardedAd = MaxRewardedAd.getInstance(idBackupReward, activity);
-                    rewardedAd.loadAd();
-                    MaxRewardedAdListener maxRewardedAdListener = new MaxRewardedAdListener() {
-                        @Override
-                        public void onRewardedVideoStarted(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onRewardedVideoCompleted(MaxAd ad) {
-                            unlockreward = true;
-                        }
-
-                        @Override
-                        public void onUserRewarded(MaxAd ad, MaxReward reward) {
-
-                        }
-
-                        @Override
-                        public void onAdLoaded(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdDisplayed(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdHidden(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdClicked(MaxAd ad) {
-
-                        }
-
-                        @Override
-                        public void onAdLoadFailed(String adUnitId, MaxError error) {
-
-                        }
-
-                        @Override
-                        public void onAdDisplayFailed(MaxAd ad, MaxError error) {
-
-                        }
-                    };
-                    rewardedAd.setListener(maxRewardedAdListener);
-
                     break;
                 case "MOPUB":
                 case "UNITY":
@@ -925,9 +568,7 @@ public class AliendroidReward {
             } else {
                 switch (selecBackuptAds) {
                     case "APPLOVIN-M":
-                        if (rewardedAd.isReady()) {
-                            rewardedAd.showAd();
-                        }
+
                         break;
                     case "MOPUB":
                     case "UNITY":
@@ -1006,9 +647,7 @@ public class AliendroidReward {
             } else {
                 switch (selecBackuptAds) {
                     case "APPLOVIN-M":
-                        if (rewardedAd.isReady()) {
-                            rewardedAd.showAd();
-                        }
+
                         break;
                     case "MOPUB":
                     case "UNITY":
@@ -1071,82 +710,6 @@ public class AliendroidReward {
     }
 
     public static void ShowRewardApplovinMax(Activity activity, String selecBackuptAds, String idReward, String idBackupReward) {
-        try {
-            if (rewardedAd.isReady()) {
-                rewardedAd.showAd();
-                LoadRewardApplovinMax(activity, selecBackuptAds, idReward, idBackupReward);
-            } else {
-                switch (selecBackuptAds) {
-                    case "GOOGLE-ADS":
-                    case "ADMOB":
-                        if (mRewardedAd != null) {
-                            Activity activityContext = activity;
-                            mRewardedAd.show(activityContext, new OnUserEarnedRewardListener() {
-                                @Override
-                                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
-                                    unlockreward = true;
-                                }
-                            });
-                        }
-                        break;
-                    case "MOPUB":
-                    case "UNITY":
-
-                        break;
-                    case "APPLOVIN-D":
-                        if (incentivizedInterstitial != null) {
-                            incentivizedInterstitial.show(activity, new AppLovinAdRewardListener() {
-                                @Override
-                                public void userRewardVerified(AppLovinAd ad, Map<String, String> response) {
-                                    unlockreward = true;
-                                }
-
-                                @Override
-                                public void userOverQuota(AppLovinAd ad, Map<String, String> response) {
-
-                                }
-
-                                @Override
-                                public void userRewardRejected(AppLovinAd ad, Map<String, String> response) {
-
-                                }
-
-                                @Override
-                                public void validationRequestFailed(AppLovinAd ad, int errorCode) {
-
-                                }
-
-
-                            }, null, new AppLovinAdDisplayListener() {
-                                @Override
-                                public void adDisplayed(AppLovinAd appLovinAd) {
-
-                                }
-
-                                @Override
-                                public void adHidden(AppLovinAd appLovinAd) {
-                                    incentivizedInterstitial.preload(null);
-                                }
-                            });
-                        }
-                        break;
-                    case "IRON":
-                        IronSource.showRewardedVideo(idBackupReward);
-                        break;
-                    case "STARTAPP":
-                        break;
-                    case "ALIEN-V":
-                        break;
-                    case "ALIEN-M":
-
-                        break;
-                }
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        LoadRewardApplovinMax(activity, selecBackuptAds, idReward, idBackupReward);
     }
 
     public static void ShowRewardApplovinDis(Activity activity, String selecBackuptAds, String idReward, String idBackupReward) {
@@ -1214,9 +777,7 @@ public class AliendroidReward {
 
                         break;
                     case "APPLOVIN-M":
-                        if (rewardedAd.isReady()) {
-                            rewardedAd.showAd();
-                        }
+
                         break;
                     case "IRON":
                         IronSource.showRewardedVideo(idBackupReward);
